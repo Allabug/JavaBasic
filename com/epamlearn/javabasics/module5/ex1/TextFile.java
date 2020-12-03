@@ -7,12 +7,11 @@ public class TextFile extends File {
     public TextFile(Directory directory, String filename, String text) {
         super(directory, filename);
         setText(text);
-        super.getDirectory().addFile(this);
     }
 
-    public void setText(String text) {
-        if (text.isEmpty()) {
-            System.out.println("Введен пустой текст");
+    public void setText(String text) throws IllegalArgumentException {
+        if (text == null || text.isEmpty()) {
+            throw new IllegalArgumentException("Text not found");
         } else {
             this.text = text;
         }
@@ -28,7 +27,9 @@ public class TextFile extends File {
         this.text = stringBuilder.append(text).toString();
     }
 
-    public String printFileContent() {
-        return text;
+    public void printFileContent() {
+
+        System.out.println(text);
+        ;
     }
 }

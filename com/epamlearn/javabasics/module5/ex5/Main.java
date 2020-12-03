@@ -1,40 +1,46 @@
 package com.epamlearn.javabasics.module5.ex5;
 
-import com.epamlearn.javabasics.module5.ex5.flowers.FlowerFactory;
-import com.epamlearn.javabasics.module5.ex5.other.Bouquet;
-import com.epamlearn.javabasics.module5.ex5.other.Package;
+import com.epamlearn.javabasics.module5.ex5.flowers.FlowerStorage;
+
+import com.epamlearn.javabasics.module5.ex5.bouquet.Bouquet;
+import com.epamlearn.javabasics.module5.ex5.bouquet.BouquetBuilder;
+import com.epamlearn.javabasics.module5.ex5.bouquet.Wrap;
 
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        Bouquet bouquet = new Bouquet();
-        String userInput;
-        int packageIndex = 1;
-        boolean isPackage = false;
-        boolean choiceOfPackage = false;
-        String inputPackage = "pack";
-        int userInputInt;
-        FlowerFactory flowerFactory = new FlowerFactory();
+
+        FlowerStorage flowerStorage = new FlowerStorage();
+        BouquetBuilder builder = new BouquetBuilder();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("List of available flowers for bouquet composition:");
-        flowerFactory.printAllFlowers();
+        flowerStorage.printAllFlowers();
 
         System.out.println("\nTo add flowers to the bouquet, enter the flower number: ");
-        System.out.println("To pack the bouquet and choose the type of packaging, enter: " + inputPackage);
+        String inputWrap = "pack";
+        System.out.println("To pack the bouquet and choose the type of packaging, enter: " + inputWrap);
+        System.out.println("To exit the program, enter: exit");
+        boolean isPackage = false;
+        String userInput;
+        int userInputInt;
         while (!isPackage) {
             userInput = scanner.nextLine();
-            if (userInput.trim().toLowerCase().equals(inputPackage)) {
+            if (userInput.trim().toLowerCase().equals(inputWrap)) {
                 isPackage = true;
+            } else if (userInput.trim().toLowerCase().equals("exit")) {
+                System.exit(0);
             } else {
                 try {
                     userInputInt = Integer.parseInt(userInput);
-                    if (userInputInt <= flowerFactory.getFlowers().size()) {
+                    if (userInputInt <= 0) {
+                        System.out.println("Please enter a number greater than 0: ");
+                    } else if (userInputInt <= flowerStorage.getFlowers().size()) {
                         int index = userInputInt - 1;
-                        bouquet.getFlowersForBouquet().add(flowerFactory.getFlowers().get(index));
-                    } else if (userInputInt > flowerFactory.getFlowers().size()) {
+                        builder.withFlower(index);
+                    } else if (userInputInt > flowerStorage.getFlowers().size()) {
                         System.out.println("Wrong number entered. Enter flower number: ");
                     }
                 } catch (NumberFormatException ex) {
@@ -43,18 +49,20 @@ public class Main {
             }
         }
         System.out.println("Select packaging: ");
-        for (Package p : Package.values()) {
+        int packageIndex = 1;
+        for (Wrap p : Wrap.values()) {
             System.out.println(packageIndex + "." + p.toString());
             packageIndex++;
         }
-        while (!choiceOfPackage) {
+        boolean choiceOfWrap = false;
+        while (!choiceOfWrap) {
             userInput = scanner.nextLine();
             try {
                 userInputInt = Integer.parseInt(userInput);
-                if (userInputInt <= Package.values().length) {
+                if (userInputInt <= Wrap.values().length) {
                     int index = userInputInt - 1;
-                    bouquet.setPackaging(Package.values()[index]);
-                    choiceOfPackage = true;
+                    builder.withWrap(index);
+                    choiceOfWrap = true;
                 } else {
                     System.out.println("Wrong number entered. Enter package number: ");
                 }
@@ -62,10 +70,9 @@ public class Main {
                 System.out.println("Wrong option!. Try again!");
             }
         }
-
+        Bouquet bouquet = builder.build();
         System.out.println("Your bouquet is ready!");
         System.out.println(bouquet);
-        bouquet.calculateTotalPraise();
-        System.out.println("\nThe cost of a bouquet with packaging: " + "\n" + bouquet.getTotalPrice());
+        System.out.println("\nThe cost of a bouquet with packaging: " + "\n" + bouquet.calculateTotalPraise());
     }
 }

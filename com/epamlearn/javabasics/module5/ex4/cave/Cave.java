@@ -1,33 +1,30 @@
 package com.epamlearn.javabasics.module5.ex4.cave;
 
+import com.epamlearn.javabasics.module5.ex4.treasure.*;
 
-import com.epamlearn.javabasics.module5.ex4.treasure.Treasure;
-import com.epamlearn.javabasics.module5.ex4.treasure.TreasureFactory;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 public class Cave {
-    private String nameCave;
-    private ArrayList<Treasure> treasures = new ArrayList<>();
 
-    TreasureFactory treasureFactory = new TreasureFactory();
+    private String name;
+    private List<Treasure> treasures = new ArrayList<>();
 
-    public Cave(String nameCave) {
-        this.nameCave = nameCave;
-        this.treasures = treasureFactory.addTreasures();
+    Treasure.TreasurePlant treasureFactory = new Treasure.TreasurePlant();
+
+    public Cave(String name) {
+        this.name = name;
+        this.treasures = treasureFactory.fillTreasures();
     }
 
     public void showAllTreasures() {
-        System.out.println(" All treasures from " + getNameCave());
+        System.out.println(" All treasures from " + getName());
         for (Treasure treasure : treasures) {
             System.out.println(treasure);
         }
     }
 
     public void getMostExpensiveTreasures() {
-        HashSet<Treasure> mostExpensiveTreasures = new HashSet<>();
+        Set<Treasure> mostExpensiveTreasures = new HashSet<>();
         int highestCost = 0;
         for (Treasure treasure : treasures) {
             if (treasure.getCost() > highestCost) {
@@ -39,7 +36,6 @@ public class Cave {
                 mostExpensiveTreasures.add(treasure1);
             }
         }
-
         for (Treasure treasure : mostExpensiveTreasures) {
             if (treasure == null) {
                 System.out.println("No treasure found");
@@ -49,9 +45,16 @@ public class Cave {
         }
     }
 
+    public int getMinPriceTreasure() {
+        List<Treasure> sortTreasure = getTreasures();
+        Collections.sort(sortTreasure);
+        int minPrice = sortTreasure.get(0).getCost();
+        return minPrice;
+    }
+
     public void getTreasuresForGivenAmount(int setValue) {
-        ArrayList<Treasure> treasuresForGivenAmount = new ArrayList<>();
-        ArrayList<Treasure> sortTreasure = getTreasures();
+        List<Treasure> treasuresForGivenAmount = new ArrayList<>();
+        List<Treasure> sortTreasure = getTreasures();
         Collections.sort(sortTreasure);
         int tempSum = 0;
         for (Treasure t : sortTreasure) {
@@ -60,29 +63,24 @@ public class Cave {
                 treasuresForGivenAmount.add(t);
             }
         }
-
-        if (treasuresForGivenAmount.size() == 0) {
-            System.out.println("No treasure found. maybe the amount is too small");
-        }
-
         for (Treasure treasure : treasuresForGivenAmount) {
             System.out.println(treasure);
         }
     }
 
-    public void setNameCave(String nameCave) {
-        this.nameCave = nameCave;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTreasures(ArrayList<Treasure> treasures) {
+    public void setTreasures(List<Treasure> treasures) {
         this.treasures = treasures;
     }
 
-    public String getNameCave() {
-        return nameCave;
+    public String getName() {
+        return name;
     }
 
-    public ArrayList<Treasure> getTreasures() {
+    public List<Treasure> getTreasures() {
         return treasures;
     }
 }

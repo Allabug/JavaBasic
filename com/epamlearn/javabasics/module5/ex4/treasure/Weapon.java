@@ -4,9 +4,7 @@ public class Weapon extends Treasure {
     private String kindOfWeapon;
 
     public Weapon(String nameTreasure, int cost, String kindOfWeapon, String descriptionOfTreasure) {
-        super.setNameTreasure(nameTreasure);
-        super.setCost(cost);
-        super.setDescriptionOfTreasure(descriptionOfTreasure);
+        super(nameTreasure, cost, descriptionOfTreasure);
         this.kindOfWeapon = kindOfWeapon;
     }
 

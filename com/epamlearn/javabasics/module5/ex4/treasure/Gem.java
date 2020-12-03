@@ -4,9 +4,7 @@ public class Gem extends Treasure {
     private String colorOfGem;
 
     public Gem(String nameTreasure, int cost, String colorOfGem, String descriptionOfTreasure) {
-        super.setNameTreasure(nameTreasure);
-        super.setCost(cost);
-        super.setDescriptionOfTreasure(descriptionOfTreasure);
+        super(nameTreasure, cost, descriptionOfTreasure);
         this.colorOfGem = colorOfGem;
     }
 

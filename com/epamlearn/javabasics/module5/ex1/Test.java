@@ -3,18 +3,19 @@ package com.epamlearn.javabasics.module5.ex1;
 import aggregation.ex1.Text;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DeleteException {
 
         String text1 = "Здесь могла бы быть очень важная информация.";
         String text2 = "Добавить еще один раздел.";
         String text3 = "Последняя попытка обновить файл.";
         Directory newCatalog = new Directory("Important documents");
         TextFile textFile = new TextFile(newCatalog, "NewTextFile", text1);
+        newCatalog.addFile(textFile);
 
         System.out.println("add text to file:");
         textFile.addText(text2);
         textFile.addText(text3);
-        System.out.println(textFile.printFileContent());
+        textFile.printFileContent();
         System.out.println(" ");
 
         System.out.println("Rename file: ");
@@ -29,14 +30,17 @@ public class Test {
 
         System.out.println("Add another text file to the directory");
         TextFile textFile1 = new TextFile(newCatalog, "Second file", text3);
-        for (TextFile f : newCatalog.getFiles()) {
+        newCatalog.addFile(textFile1);
+        for (File f : newCatalog.getFiles()) {
             System.out.println(f.toString());
         }
         System.out.println(" ");
 
         System.out.println("Let's delete the file named \"Modified file\"");
+
         newCatalog.deleteFile("Modified file");
-        for (TextFile f : newCatalog.getFiles()) {
+
+        for (File f : newCatalog.getFiles()) {
             System.out.println(f.toString());
         }
     }

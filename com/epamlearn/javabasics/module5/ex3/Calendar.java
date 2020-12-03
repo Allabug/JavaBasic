@@ -2,11 +2,12 @@ package com.epamlearn.javabasics.module5.ex3;
 
 import java.time.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Calendar {
     private String country;
     private int year;
-    private ArrayList<CalendarDay> daysOfYear = new ArrayList<>();
+    private List<CalendarDay> daysOfYear = new ArrayList<>();
 
     public Calendar(int year, String country) {
         this.year = year;
@@ -24,8 +25,8 @@ public class Calendar {
         }
     }
 
-    public ArrayList<CalendarDay> getHolidays() {
-        ArrayList<CalendarDay> redDays = new ArrayList<>();
+    public List<CalendarDay> getHolidays() {
+        List<CalendarDay> redDays = new ArrayList<>();
         for (CalendarDay day : daysOfYear) {
             if (day.isRedDay()) {
                 redDays.add(day);

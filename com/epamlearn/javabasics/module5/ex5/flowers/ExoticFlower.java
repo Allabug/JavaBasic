@@ -1,15 +1,13 @@
 package com.epamlearn.javabasics.module5.ex5.flowers;
 
-import com.epamlearn.javabasics.module5.ex5.other.Price;
+import com.epamlearn.javabasics.module5.ex5.bouquet.Price;
 
 public class ExoticFlower extends Flower {
     private String type;
     private String countryOfOrigin;
 
     public ExoticFlower(String nameFlower, String colorFlower, Price priceFlower, String type, String countryOfOrigin) {
-        super.setNameFlower(nameFlower);
-        super.setColorFlower(colorFlower);
-        super.setPriceFlower(priceFlower);
+      super(nameFlower, colorFlower, priceFlower);
         this.type = type;
         this.countryOfOrigin = countryOfOrigin;
     }

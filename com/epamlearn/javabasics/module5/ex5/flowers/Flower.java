@@ -1,12 +1,18 @@
 package com.epamlearn.javabasics.module5.ex5.flowers;
 
-import com.epamlearn.javabasics.module5.ex5.other.Price;
+import com.epamlearn.javabasics.module5.ex5.bouquet.Price;
 
 public class Flower {
 
     private String nameFlower;
     private String colorFlower;
     private Price priceFlower;
+
+    public Flower(String nameFlower, String colorFlower, Price priceFlower) {
+        this.nameFlower = nameFlower;
+        this.colorFlower = colorFlower;
+        this.priceFlower = priceFlower;
+    }
 
     public void setNameFlower(String nameFlower) {
         this.nameFlower = nameFlower;

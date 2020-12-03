@@ -2,11 +2,12 @@ package com.epamlearn.javabasics.module5.ex1;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Directory {
     private String directoryName;
-    private ArrayList<TextFile> files = new ArrayList<>();
-    private ArrayList<Directory> directories = new ArrayList<>();
+    private List<File> files = new ArrayList<>();
+    private List<Directory> directories = new ArrayList<>();
 
     public Directory(String directoryName) {
         this.directoryName = directoryName;
@@ -17,7 +18,7 @@ public class Directory {
         return directoryName;
     }
 
-    public ArrayList<TextFile> getFiles() {
+    public List<File> getFiles() {
         return files;
     }
 
@@ -25,7 +26,7 @@ public class Directory {
         this.directoryName = directoryName;
     }
 
-    public void setFiles(ArrayList<TextFile> files) {
+    public void setFiles(List<File> files) {
         this.files = files;
     }
 
@@ -37,8 +38,8 @@ public class Directory {
         directories.add(directory);
     }
 
-    public void addFile(TextFile file) {
-        this.files.add(file);
+    public void addFile(File file) {
+        files.add(file);
     }
 
     @Override
@@ -54,12 +55,18 @@ public class Directory {
         System.out.println(getDirectoryName());
     }
 
-    public void deleteFile(String fileName) {
-        Iterator<TextFile> fileIterator = files.iterator();
-        while (fileIterator.hasNext()) {
-            File nextFile = fileIterator.next();
-            if (nextFile.getFileName().equals(fileName)) {
-                fileIterator.remove();
+    public void deleteFile(String fileName) throws DeleteException {
+        for (File file : files) {
+            if (file.getFileName().equals(fileName)) {
+                Iterator<File> fileIterator = files.iterator();
+                while (fileIterator.hasNext()) {
+                    File nextFile = fileIterator.next();
+                    if (nextFile.getFileName().equals(fileName)) {
+                        fileIterator.remove();
+                    }
+                }
+            } else {
+                throw new DeleteException("File not found!");
             }
         }
     }

@@ -1,14 +1,12 @@
 package com.epamlearn.javabasics.module5.ex5.flowers;
 
-import com.epamlearn.javabasics.module5.ex5.other.Price;
+import com.epamlearn.javabasics.module5.ex5.bouquet.Price;
 
 public class GardenFlower extends Flower {
     private String type;
 
     public GardenFlower(String nameFlower, String colorFlower, Price priceFlower, String type) {
-        super.setNameFlower(nameFlower);
-        super.setColorFlower(colorFlower);
-        super.setPriceFlower(priceFlower);
+        super(nameFlower, colorFlower, priceFlower);
         this.type = type;
     }
 
@@ -22,6 +20,6 @@ public class GardenFlower extends Flower {
 
     @Override
     public String toString() {
-        return   super.toString() + "type: " + type + " }";
+        return super.toString() + "type: " + type + " }";
     }
 }

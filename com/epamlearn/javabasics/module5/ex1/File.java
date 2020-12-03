@@ -2,7 +2,7 @@ package com.epamlearn.javabasics.module5.ex1;
 
 public class File {
 
-    public Directory directory;
+    private Directory directory;
     private String fileName;
 
     public File(Directory directory, String fileName) {

@@ -2,12 +2,11 @@ package com.epamlearn.javabasics.module5.ex2;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Payment {
 
-    private Price totalPrice = new Price();
-    private PaymentItem paymentItem;
-    private ArrayList<PaymentItem> paymentItems = new ArrayList<>();
+    private List<PaymentItem> paymentItems = new ArrayList<>();
 
     public Payment() {
     }
@@ -54,36 +53,19 @@ public class Payment {
         }
     }
 
-    public void calculateTotalPrice() {
+    public String calculateTotalPrice() {
         BigDecimal sumTotal = BigDecimal.ZERO;
         for (PaymentItem p : paymentItems) {
-            sumTotal = sumTotal.add(p.product.getProductPrice().getPriceBigDecimal());
+            sumTotal = sumTotal.add(p.product.getProductPrice().getPrice());
         }
-        this.totalPrice.setPrice(sumTotal.toString());
-        this.totalPrice.setCurrency("BYN");
+        return sumTotal.toString() + " BYN";
     }
 
-    public void setTotalPrice(Price totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public void setPaymentItem(PaymentItem paymentItem) {
-        this.paymentItem = paymentItem;
-    }
-
-    public void setPaymentItems(ArrayList<PaymentItem> paymentItems) {
+    public void setPaymentItems(List<PaymentItem> paymentItems) {
         this.paymentItems = paymentItems;
     }
 
-    public Price getTotalPrice() {
-        return totalPrice;
-    }
-
-    public PaymentItem getPaymentItem() {
-        return paymentItem;
-    }
-
-    public ArrayList<PaymentItem> getPaymentItems() {
+    public List<PaymentItem> getPaymentItems() {
         return paymentItems;
     }
 

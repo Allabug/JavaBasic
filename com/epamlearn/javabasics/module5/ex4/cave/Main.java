@@ -19,12 +19,30 @@ public class Main {
         System.out.println(" ");
 
         System.out.println("Show treasures for a given amount. Enter an integer: ");
-        try {
-            Scanner scanner = new Scanner(System.in);
-            int amount = scanner.nextInt();
-            cave.getTreasuresForGivenAmount(amount);
-        } catch (Exception ex) {
-            System.out.println("You entered the wrong number");
+        System.out.println("To exit the program, enter any negative number: ");
+
+        Scanner scanner = new Scanner(System.in);
+        boolean isTrue = true;
+
+        while (isTrue) {
+            String amount = scanner.nextLine();
+            int amountInt;
+            try {
+                amountInt = Integer.parseInt(amount);
+                int minPrice = cave.getMinPriceTreasure();
+                if (amountInt > minPrice) {
+                    cave.getTreasuresForGivenAmount(amountInt);
+                    isTrue = false;
+                } else if (amountInt == 1) {
+                    System.out.println("We do not have so cheap treasures");
+                } else if (amountInt < 0) {
+                    System.exit(1);
+                } else {
+                    System.out.println("We do not have so cheap treasures. Please enter a number greater than " + minPrice);
+                }
+            } catch (NumberFormatException ex) {
+                System.out.println("You entered not a number. Enter integer: ");
+            }
         }
     }
 }

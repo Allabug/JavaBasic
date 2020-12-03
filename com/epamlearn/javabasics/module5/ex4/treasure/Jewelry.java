@@ -3,10 +3,8 @@ package com.epamlearn.javabasics.module5.ex4.treasure;
 public class Jewelry extends Treasure {
     private String kindOfMetal;
 
-    public Jewelry(String nameTreasure, int cost, String kindOfMetal, String descriptionOfTreasure){
-        super.setNameTreasure(nameTreasure);
-        super.setCost(cost);
-        super.setDescriptionOfTreasure(descriptionOfTreasure);
+    public Jewelry(String nameTreasure, int cost, String kindOfMetal, String descriptionOfTreasure) {
+        super(nameTreasure, cost, descriptionOfTreasure);
         this.kindOfMetal = kindOfMetal;
     }
 

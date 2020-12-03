@@ -5,9 +5,7 @@ public class Coin extends Treasure {
     private String mint;
 
     public Coin(String nameTreasure, int cost, String composition, String mint, String descriptionOfTreasure) {
-        super.setNameTreasure(nameTreasure);
-        super.setCost(cost);
-        super.setDescriptionOfTreasure(descriptionOfTreasure);
+       super(nameTreasure, cost, descriptionOfTreasure);
         this.composition = composition;
         this.mint = mint;
     }

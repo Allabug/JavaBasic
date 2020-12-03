@@ -1,4 +1,4 @@
-package com.epamlearn.javabasics.module5.ex2;
+package com.epamlearn.javabasics.module5.ex5.bouquet;
 
 import java.math.BigDecimal;
 
@@ -35,4 +35,5 @@ public class Price {
     public String toString() {
         return "price: " + price + " " + currency;
     }
+
 }
