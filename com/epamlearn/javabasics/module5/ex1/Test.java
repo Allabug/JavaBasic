@@ -1,9 +1,7 @@
 package com.epamlearn.javabasics.module5.ex1;
 
-import aggregation.ex1.Text;
-
 public class Test {
-    public static void main(String[] args) throws DeleteException {
+    public static void main(String[] args) throws FileNotFound {
 
         String text1 = "Здесь могла бы быть очень важная информация.";
         String text2 = "Добавить еще один раздел.";
@@ -37,8 +35,11 @@ public class Test {
         System.out.println(" ");
 
         System.out.println("Let's delete the file named \"Modified file\"");
-
-        newCatalog.deleteFile("Modified file");
+        try {
+            newCatalog.deleteFile("Modified file");
+        } catch (FileNotFound ex) {
+            System.out.println(ex.getMessage());
+        }
 
         for (File f : newCatalog.getFiles()) {
             System.out.println(f.toString());

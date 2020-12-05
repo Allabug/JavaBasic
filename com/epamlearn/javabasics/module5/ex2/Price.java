@@ -5,14 +5,14 @@ import java.math.BigDecimal;
 public class Price {
 
     private String currency;
-    private BigDecimal price;
+    private BigDecimal priceProduct;
 
     public Price() {
     }
 
     public Price(BigDecimal price, String currency) {
         this.currency = currency;
-        this.price = price;
+        this.priceProduct = price;
     }
 
     public void setCurrency(String currency) {
@@ -23,16 +23,16 @@ public class Price {
         return currency;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setPriceProduct(BigDecimal priceProduct) {
+        this.priceProduct = priceProduct;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public BigDecimal getPriceProduct() {
+        return priceProduct;
     }
 
     @Override
     public String toString() {
-        return "price: " + price + " " + currency;
+        return "price: " + priceProduct + " " + currency;
     }
 }

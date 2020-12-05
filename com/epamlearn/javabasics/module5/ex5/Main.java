@@ -39,7 +39,7 @@ public class Main {
                         System.out.println("Please enter a number greater than 0: ");
                     } else if (userInputInt <= flowerStorage.getFlowers().size()) {
                         int index = userInputInt - 1;
-                        builder.withFlower(index);
+                        builder.withFlower(flowerStorage.getFlowers().get(index));
                     } else if (userInputInt > flowerStorage.getFlowers().size()) {
                         System.out.println("Wrong number entered. Enter flower number: ");
                     }
@@ -61,7 +61,7 @@ public class Main {
                 userInputInt = Integer.parseInt(userInput);
                 if (userInputInt <= Wrap.values().length) {
                     int index = userInputInt - 1;
-                    builder.withWrap(index);
+                    builder.withWrap(Wrap.values()[index]);
                     choiceOfWrap = true;
                 } else {
                     System.out.println("Wrong number entered. Enter package number: ");

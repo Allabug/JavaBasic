@@ -1,6 +1,5 @@
 package com.epamlearn.javabasics.module5.ex1;
 
-
 public class TextFile extends File {
     private String text;
 
@@ -9,7 +8,7 @@ public class TextFile extends File {
         setText(text);
     }
 
-    public void setText(String text) throws IllegalArgumentException {
+    public void setText(String text) {
         if (text == null || text.isEmpty()) {
             throw new IllegalArgumentException("Text not found");
         } else {
@@ -28,8 +27,6 @@ public class TextFile extends File {
     }
 
     public void printFileContent() {
-
         System.out.println(text);
-        ;
     }
 }

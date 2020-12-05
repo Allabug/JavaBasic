@@ -8,9 +8,6 @@ public class Payment {
 
     private List<PaymentItem> paymentItems = new ArrayList<>();
 
-    public Payment() {
-    }
-
     public void addItemToPayment(PaymentItem... paymentItems) {
         for (PaymentItem p : paymentItems) {
             this.paymentItems.add(p);
@@ -56,7 +53,8 @@ public class Payment {
     public String calculateTotalPrice() {
         BigDecimal sumTotal = BigDecimal.ZERO;
         for (PaymentItem p : paymentItems) {
-            sumTotal = sumTotal.add(p.product.getProductPrice().getPrice());
+            BigDecimal amount = BigDecimal.valueOf(p.getProductsAmount());
+            sumTotal = sumTotal.add(p.product.getProductPrice().getPriceProduct().multiply(amount));
         }
         return sumTotal.toString() + " BYN";
     }

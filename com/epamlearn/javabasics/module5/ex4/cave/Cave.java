@@ -9,11 +9,9 @@ public class Cave {
     private String name;
     private List<Treasure> treasures = new ArrayList<>();
 
-    Treasure.TreasurePlant treasureFactory = new Treasure.TreasurePlant();
-
     public Cave(String name) {
         this.name = name;
-        this.treasures = treasureFactory.fillTreasures();
+        this.treasures = TreasurePlant.getTreasuresPlant();
     }
 
     public void showAllTreasures() {
@@ -48,8 +46,7 @@ public class Cave {
     public int getMinPriceTreasure() {
         List<Treasure> sortTreasure = getTreasures();
         Collections.sort(sortTreasure);
-        int minPrice = sortTreasure.get(0).getCost();
-        return minPrice;
+        return sortTreasure.get(0).getCost();
     }
 
     public void getTreasuresForGivenAmount(int setValue) {

@@ -1,7 +1,5 @@
 package com.epamlearn.javabasics.module5.ex4.cave;
 
-import com.epamlearn.javabasics.module5.ex4.treasure.Coin;
-import com.epamlearn.javabasics.module5.ex4.treasure.Treasure;
 
 import java.util.Scanner;
 

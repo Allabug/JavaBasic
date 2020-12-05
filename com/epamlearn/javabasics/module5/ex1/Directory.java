@@ -55,19 +55,27 @@ public class Directory {
         System.out.println(getDirectoryName());
     }
 
-    public void deleteFile(String fileName) throws DeleteException {
+    public void deleteFile(String fileName) throws FileNotFound {
+        boolean isFound = false;
         for (File file : files) {
             if (file.getFileName().equals(fileName)) {
-                Iterator<File> fileIterator = files.iterator();
-                while (fileIterator.hasNext()) {
-                    File nextFile = fileIterator.next();
-                    if (nextFile.getFileName().equals(fileName)) {
-                        fileIterator.remove();
+                isFound = true;
+            }
+        }
+        if (isFound) {
+            for (File file : files) {
+                if (file.getFileName().equals(fileName)) {
+                    Iterator<File> fileIterator = files.iterator();
+                    while (fileIterator.hasNext()) {
+                        File nextFile = fileIterator.next();
+                        if (nextFile.getFileName().equals(fileName)) {
+                            fileIterator.remove();
+                        }
                     }
                 }
-            } else {
-                throw new DeleteException("File not found!");
             }
+        } else {
+            throw new FileNotFound("File not found!");
         }
     }
 }

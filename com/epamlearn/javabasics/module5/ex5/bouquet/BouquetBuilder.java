@@ -1,5 +1,6 @@
 package com.epamlearn.javabasics.module5.ex5.bouquet;
 
+import com.epamlearn.javabasics.module5.ex5.flowers.Flower;
 import com.epamlearn.javabasics.module5.ex5.flowers.FlowerStorage;
 
 public class BouquetBuilder {
@@ -7,13 +8,13 @@ public class BouquetBuilder {
     private Wrap wrap;
     FlowerStorage flowerStorage = new FlowerStorage();
 
-    public BouquetBuilder withFlower(int index) {
-        bouquet.getFlowersForBouquet().add(flowerStorage.getFlowers().get(index));
+    public BouquetBuilder withFlower(Flower flower) {
+        bouquet.getFlowersForBouquet().add(flower);
         return this;
     }
 
-    public BouquetBuilder withWrap(int index) {
-        bouquet.setWrap(Wrap.values()[index]);
+    public BouquetBuilder withWrap(Wrap wrap) {
+        bouquet.setWrap(wrap);
         return this;
     }
 

@@ -1,6 +1,5 @@
 package com.epamlearn.javabasics.module5.ex3;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
