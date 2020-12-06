@@ -13,7 +13,7 @@ public class Main {
         System.out.println("Number of treasure = " + cave.getTreasures().size() + "\n");
 
         System.out.println("The most expensive treasures in the cave: " + "\n");
-        cave.getMostExpensiveTreasures();
+        cave.showMostExpensiveTreasures();
         System.out.println(" ");
 
         System.out.println("Show treasures for a given amount. Enter an integer: ");
@@ -29,7 +29,7 @@ public class Main {
                 amountInt = Integer.parseInt(amount);
                 int minPrice = cave.getMinPriceTreasure();
                 if (amountInt > minPrice) {
-                    cave.getTreasuresForGivenAmount(amountInt);
+                    cave.showTreasuresForGivenAmount(amountInt);
                     isTrue = false;
                 } else if (amountInt == 1) {
                     System.out.println("We do not have so cheap treasures");

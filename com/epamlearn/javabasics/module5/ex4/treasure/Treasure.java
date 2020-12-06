@@ -48,4 +48,13 @@ public class Treasure implements Comparable<Treasure> {
         return value;
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

@@ -29,14 +29,6 @@ public class Bouquet {
         this.wrap = packaging;
     }
 
-    public String calculateTotalPraise() {
-        BigDecimal sumTotal = BigDecimal.ZERO;
-        for (Flower f : flowersForBouquet) {
-            sumTotal = sumTotal.add(f.getPriceFlower().getPrice());
-        }
-        sumTotal = sumTotal.add(wrap.getPrice().getPrice());
-       return sumTotal.toString() + " BYN";
-    }
 
     @Override
     public String toString() {

@@ -11,7 +11,7 @@ public class Cave {
 
     public Cave(String name) {
         this.name = name;
-        this.treasures = TreasurePlant.getTreasuresPlant();
+        this.treasures = TreasurePlant.getTreasures();
     }
 
     public void showAllTreasures() {
@@ -21,7 +21,7 @@ public class Cave {
         }
     }
 
-    public void getMostExpensiveTreasures() {
+    public void showMostExpensiveTreasures() {
         Set<Treasure> mostExpensiveTreasures = new HashSet<>();
         int highestCost = 0;
         for (Treasure treasure : treasures) {
@@ -49,7 +49,7 @@ public class Cave {
         return sortTreasure.get(0).getCost();
     }
 
-    public void getTreasuresForGivenAmount(int setValue) {
+    public void showTreasuresForGivenAmount(int setValue) {
         List<Treasure> treasuresForGivenAmount = new ArrayList<>();
         List<Treasure> sortTreasure = getTreasures();
         Collections.sort(sortTreasure);

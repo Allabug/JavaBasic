@@ -49,7 +49,7 @@ public class TreasurePlant {
         }
     }
 
-    public static List<Treasure> getTreasuresPlant() {
+    public static List<Treasure> getTreasures() {
         return treasuresPlant;
     }
 
