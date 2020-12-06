@@ -2,20 +2,22 @@ package com.epamlearn.javabasics.module5.ex5;
 
 import com.epamlearn.javabasics.module5.ex5.bouquet.BouquetBuilder;
 import com.epamlearn.javabasics.module5.ex5.bouquet.Wrap;
+import com.epamlearn.javabasics.module5.ex5.flowers.Flower;
 import com.epamlearn.javabasics.module5.ex5.flowers.FlowerStorage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInputUtils {
 
-    BouquetBuilder builder = new BouquetBuilder();
     FlowerStorage flowerStorage = new FlowerStorage();
     Scanner scanner = new Scanner(System.in);
 
 
-    public UserInputUtils handleUserInputForFlowers() {
+    public List<Flower> handleUserInputForFlowers() {
         boolean isPackage = false;
-
+        List<Flower> flowers = new ArrayList<>();
         System.out.println("List of available flowers for bouquet composition:");
         flowerStorage.printAllFlowers();
 
@@ -40,7 +42,7 @@ public class UserInputUtils {
                         System.out.println("Please enter a number greater than 0: ");
                     } else if (userInputInt <= flowerStorage.getFlowers().size()) {
                         int index = userInputInt - 1;
-                        builder.withFlower(flowerStorage.getFlowers().get(index));
+                        flowers.add(flowerStorage.getFlowers().get(index));
                     } else if (userInputInt > flowerStorage.getFlowers().size()) {
                         System.out.println("Wrong number entered. Enter flower number: ");
                     }
@@ -49,11 +51,11 @@ public class UserInputUtils {
                 }
             }
         }
-        return this;
+        return flowers;
     }
 
-    public BouquetBuilder handleUserInputForWrap() {
-
+    public Wrap handleUserInputForWrap() {
+        Wrap wrap = null;
         System.out.println("Select packaging: ");
         int packageIndex = 1;
         for (Wrap p : Wrap.values()) {
@@ -69,7 +71,7 @@ public class UserInputUtils {
                 userInputInt = Integer.parseInt(userInput);
                 if (userInputInt <= Wrap.values().length) {
                     int index = userInputInt - 1;
-                    builder.withWrap(Wrap.values()[index]);
+                     wrap = Wrap.values()[index];
                     choiceOfWrap = true;
                 } else {
                     System.out.println("Wrong number entered. Enter package number: ");
@@ -78,6 +80,6 @@ public class UserInputUtils {
                 System.out.println("Wrong option!. Try again!");
             }
         }
-        return builder;
+        return wrap;
     }
 }

@@ -12,7 +12,7 @@ public class PriceCalculator {
         this.bouquet = bouquet;
     }
 
-    public String calculateTotalPraise() {
+    public String calculateTotalPrice() {
         BigDecimal sumTotal = BigDecimal.ZERO;
         for (Flower f : bouquet.getFlowersForBouquet()) {
             sumTotal = sumTotal.add(f.getPriceFlower().getPrice());
